@@ -1,0 +1,23 @@
+{
+  "name": "navsabq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Gabriel Town",
+  "license": "ISC",
+  "dependencies": {
+    "awesome-graphql-client": "^1.0.1",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "tailwindcss": "^3.4.1"
+  }
+}

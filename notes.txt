@@ -1,0 +1,38 @@
+INSTALLS
+nvm install node
+npm init -y       
+npm i express   
+npm i -D nodemon     
+npm i awesome-graphql-client
+npm i node-fetch
+npm install dotenv   
+
+https://media.graphassets.com/${staff.mainPicture.handle}
+
+
+
+
+card
+        <div class="p-5 m-5 grid grid-cols-3 gap-4">
+          ${staffs.map((staff) => `
+              <div class="card card-compact w-96 bg-base-100 shadow-xl rounded-2xl">
+                <figure>
+                  <img src="https://media.graphassets.com/${staff.mainPicture.handle}" alt="${staff.name} Picture" />
+                </figure>
+                <div class="card-body">
+                  <h2 class="card-title">
+                    ${staff.name}
+                  </h2>
+                  ${staff.description.html}
+                  <div class="card-actions justify-end">
+                    <a class="badge">Fashion</a> 
+                    <a class="badge badge-outline">Products</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+
+
