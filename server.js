@@ -110,11 +110,11 @@ app.get("/staffs", async (req, res) => {
 //Handle get mission
 app.get("/mission", async (req, res) => {
   // console.log(req.query)
-  
+
   res.send("Hello, id is: " + req.query.slug)
 
 });
 
 app.listen(3000, () => {
-  console.log("serving bitch");
+  console.log("serving on 3000");
 });
