@@ -1,22 +1,37 @@
-import express from "express";
-import dotenv from "dotenv";
-import { AwesomeGraphQLClient } from "awesome-graphql-client";
-import fetch from "node-fetch";
-dotenv.config();
-const app = express();
+const express = require("express");
+const path = require('path')
+// const dotenv = require("dotenv");
+// const { AwesomeGraphQLClient } = require("awesome-graphql-client");
+// const fetch = require("node-fetch");
+// dotenv.config();
 
+
+const app = express();
+app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 // Set static folder
-app.use(express.static("html"));
+app.use(express.static("public"));
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-const endpoint = process.env["HYGRAPH_ENDPOINT"];
+// const endpoint = process.env["HYGRAPH_ENDPOINT"];
 
-const client = new AwesomeGraphQLClient({
-  endpoint: endpoint,
-  fetch,
+// const client = new AwesomeGraphQLClient({
+//   endpoint: endpoint,
+//   fetch,
+// });
+
+
+const staff = require('./routes/staff');
+const missions = require('./routes/missions');
+
+app.use('/staff', staff)
+app.use('/missions', missions)
+
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 //Handle get request to fetch staff
@@ -107,13 +122,13 @@ app.get("/staffs", async (req, res) => {
 
 
 
-//Handle get mission
-app.get("/mission", async (req, res) => {
-  // console.log(req.query)
+// //Handle get mission
+// app.get("/mission", async (req, res) => {
+//   // console.log(req.query)
 
-  res.send("Hello, id is: " + req.query.slug)
+//   res.send("Hello, id is: " + req.query.slug)
 
-});
+// });
 
 app.listen(3000, () => {
   console.log("serving on 3000");
