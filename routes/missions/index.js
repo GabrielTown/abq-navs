@@ -18,7 +18,42 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:slug", async (req, res) => {
-    res.send(`<h1>${req.params.slug}</h1>`)
+    const slug = req.params.slug
+    const getMissionBySlug = `
+      query GetMissionBySlug($slug: String){
+        mission(where: {slug: $slug} ) {
+          id
+          name
+          slug
+          description {
+            html
+          }
+          staffs {
+            email
+            givingUrl
+            name
+            mainPicture {
+              handle
+            }
+            description {
+              html
+            }
+          }
+          ministryPictures {
+            handle
+          }
+          mainPicture {
+            handle
+          }
+        }
+      }
+    `;
+      
+    const { mission } = await client.request(getMissionBySlug, { slug: slug })
+    console.log(mission)
+    res.render('missions', {
+      mission: mission
+    });
 });
   
 

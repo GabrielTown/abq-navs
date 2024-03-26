@@ -3,27 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
-    <title>Ministries</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/alpine-morph.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../styles/style.css" rel="stylesheet" />
+    <title><%= mission.name %></title>
 </head>
 <body>
-    <button type="button" hx-post="http://localhost:1330/message" hx-target="#response">
-        Say Message
-    </button>
+    <div class="text-center">
+      <h1 class="text-3xl font-thin my-5"><%= mission.name %></h1>
+    </div>  
 
-    <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-        <div class="card-body">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
-          </div>
+    <div class="text-center">
+      <h2 class="text-2xl font-small my-5">STAFF</h2>
+    </div>  
+    <div class="m-5 mt-8 columns-1 lg:columns-2">
+      <% mission.staffs.forEach(staff => { %>
+        <div class="mb-4">
+           <div class="group relative block bg-black">
+           <img
+             alt="<% staff.name %> Picture"
+             src="https://media.graphassets.com/<%= staff.mainPicture.handle %>"
+             class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
+           />
+                  
+             <div class="relative p-4 sm:p-6 lg:p-8">
+               <a 
+                 href="../missions/<%= mission.slug %>"
+                 class="underline underline-offset-4 transition-all text-sm hover:text-base font-medium uppercase tracking-widest text-pink-500"
+               >
+                 <%= mission.name %>
+               </a>
+               <p class="text-xl font-bold text-white sm:text-2xl"<%= staff.name %></p>
+               <div class="mt-32">
+                 <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                   <div class="text-sm text-white">
+                    <%- staff.description.html %>
+                   </div>
+                 </div>
+               </div>
+               <div class="mt-10">
+               <a
+                 class="inline-block border border-pink-600 bg-pink-600 px-8 mr-2 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-pink-500"
+                 href=<%= staff.givingUrl %>"
+               >
+                 GIVE
+               </a>
+               <a
+                 class="inline-block border border-pink-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-white-500"
+                 href="mailto:<%= staff.email %>"
+               >
+                 CONTACT
+               </a>
+               </div>
+             </div>
+           </div>
         </div>
+      <% }); %>
       </div>
-    <div id="response">
-        
-    </div>
-    
 </body>
 </html>
