@@ -22,7 +22,8 @@ router.get("/", async (req, res) => {
           mainPicture {
             handle
           }
-          name
+          firstName
+          lastName
           phone
           description {
         html

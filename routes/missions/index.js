@@ -24,6 +24,7 @@ router.get("/:slug", async (req, res) => {
         mission(where: {slug: $slug} ) {
           id
           name
+          missionStatement
           slug
           description {
             html
@@ -31,7 +32,8 @@ router.get("/:slug", async (req, res) => {
           staffs {
             email
             givingUrl
-            name
+            firstName
+            lastName
             mainPicture {
               handle
             }

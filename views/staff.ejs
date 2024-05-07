@@ -22,7 +22,7 @@
         <div class="mb-4">
            <div class="group relative block bg-black">
            <img
-             alt="<% staff.name %> Picture"
+             alt="<%= staff.firstName %> Picture"
              src="https://media.graphassets.com/<%= staff.mainPicture.handle %>"
              class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
            />
@@ -35,7 +35,7 @@
                  <%= staff.mission.name %>
                </a>
                     
-               <p class="text-xl font-bold text-white sm:text-2xl"<%= staff.name %></p>
+               <p class="text-xl font-bold text-white sm:text-2xl"><%= staff.firstName %> <%= staff.lastName %></p>
                     
                <div class="mt-32">
                  <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
