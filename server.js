@@ -10,7 +10,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 // Set static folder
-app.use(express.static("public"));
+// app.use(express.static("public"));
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
@@ -36,5 +36,5 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log("serving on 3000");
+  console.log(`serving on ${port}`);
 });
