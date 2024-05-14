@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require('path')
-// const dotenv = require("dotenv");
+const dotenv = require("dotenv");
 // const { AwesomeGraphQLClient } = require("awesome-graphql-client");
 // const fetch = require("node-fetch");
 // dotenv.config();
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("serving on 3000");
 });
