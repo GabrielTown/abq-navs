@@ -21,11 +21,12 @@
       <% staffs.forEach(staff => { %>
         <div class="mb-4">
            <div class="group relative block bg-black">
+            
            <img
              alt="<%= staff.firstName %> Picture"
-             src="https://media.graphassets.com/<%=if (staff.mainPicture.handle) { %> staff.mainPicture.handle <% } else { %> de8rrZz7SNG9yaUs3QBA <% } %>"
+             src="https://media.graphassets.com/<%= staff.mainPicture.handle %>"
              class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
-           />
+           /> 
                   
              <div class="relative p-4 sm:p-6 lg:p-8">
                <a 
