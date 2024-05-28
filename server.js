@@ -8,9 +8,12 @@ const dotenv = require("dotenv");
 
 const app = express();
 app.set("view engine", "ejs");
+
+// app.use(express.static(path.join(__dirname, 'public')));
+
 app.set('views', path.join(__dirname, 'views'));
+
 // Set static folder
-// app.use(express.static("public"));
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)

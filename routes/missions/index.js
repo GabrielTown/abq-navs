@@ -52,10 +52,45 @@ router.get("/:slug", async (req, res) => {
     `;
       
     const { mission } = await client.request(getMissionBySlug, { slug: slug })
-    console.log(mission)
-    res.render('missions', {
-      mission: mission
-    });
+
+    if (mission !== null) {
+      res.render('missions', {
+        mission: mission
+      });
+    } else {
+      console.log('here in magical why dont i work land')
+      // router.get("/", async (req, res) => {
+      //   const getAllStaff = `
+      //     {
+      //       staffs {
+      //         email
+      //         givingUrl
+      //         mainPicture {
+      //           handle
+      //         }
+      //         firstName
+      //         lastName
+      //         phone
+      //         description {
+      //       html
+      //     }
+      //     mission {
+      //       ... on Mission {
+      //         name
+      //         slug
+      //       }
+      //     }
+      //       }
+      //     }
+      //     `;
+      
+      //   const { staffs } = await client.request(getAllStaff);
+      
+      //   res.render('staff', {
+      //     staffs: staffs
+      //   });
+      // });
+    }
 });
   
 

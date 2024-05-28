@@ -14,19 +14,31 @@
   </head>
   <body>
     <main>
+      <%- include('partials/header') %>
       <div class="text-center">
         <h1 class="text-3xl font-thin my-5">Albuquerque Staff</h1>
       </div>
+      
       <div class="m-5 mt-8 columns-1 lg:columns-2">
       <% staffs.forEach(staff => { %>
         <div class="mb-4">
            <div class="group relative block bg-black">
-            
-           <img
-             alt="<%= staff.firstName %> Picture"
-             src="https://media.graphassets.com/<%= staff.mainPicture.handle %>"
-             class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
-           /> 
+              <% if (typeof(staff.mainPicture.handle) != undefined) { %>
+                <img
+                  alt="<%= staff.firstName %> Picture"
+                  src="https://media.graphassets.com/<%= staff.mainPicture.handle %>"
+                  class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
+                /> 
+              <% } else { %>
+                <img
+                  alt="<%= staff.firstName %> Picture"
+                  src="../default.jpg"
+                  class="absolute inset-0 h-full w-full object-cover opacity-65 transition-opacity group-hover:opacity-30"
+                /> 
+              <% } %>
+             
+
+    
                   
              <div class="relative p-4 sm:p-6 lg:p-8">
                <a 
